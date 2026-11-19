@@ -1,0 +1,10 @@
+# Proprietary / moat material — never commit
+private/
+/private/**
+
+# Local outputs
+*.out.local.json
+__pycache__/
+*.pyc
+.env
+.DS_Store
