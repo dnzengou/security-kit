@@ -1,0 +1,17 @@
+{
+  "engagement_id": "ENG-2026-001",
+  "client": "Example Org (fictional)",
+  "authorizer": {"name": "{{NAME}}", "role": "CISO"},
+  "assessor": "{{ASSESSOR}}",
+  "scope": [{"asset": "example.com", "type": "domain", "environment": "production"}],
+  "out_of_scope": ["Third-party SaaS", "Employee devices"],
+  "window": {"start": "2026-01-10T08:00:00+01:00", "end": "2026-01-24T18:00:00+01:00", "timezone": "Europe/Brussels"},
+  "allowed_methods": ["passive_public_read", "tls_handshake", "header_fetch", "document_review", "interview"],
+  "prohibited": ["exploitation", "credential attacks", "denial of service", "social engineering"],
+  "stop_conditions": ["Service degradation", "Unexpected sensitive data access", "Client request"],
+  "emergency_contact": "{{24x7 CONTACT}}",
+  "data_handling": "Encrypted store, assessor team only, delete 90 days after report",
+  "frameworks": ["NIS2", "ISO27001:2022", "NIST-CSF-2.0", "OWASP-LLM-2025"],
+  "approved_at": "2026-01-09T16:00:00+01:00",
+  "signature_ref": "EV-0001"
+}

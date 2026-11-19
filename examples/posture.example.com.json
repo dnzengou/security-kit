@@ -1,0 +1,324 @@
+{
+  "tool": "posture_check.py/1.0",
+  "generated_at": "2026-11-19T18:45:17+00:00",
+  "targets": [
+    "example.com"
+  ],
+  "findings": [
+    {
+      "id": "DNS-001",
+      "check": "dns.resolve",
+      "target": "example.com",
+      "status": "pass",
+      "severity": "info",
+      "title": "Host resolves",
+      "detail": "",
+      "evidence": {
+        "A": [
+          "198.18.0.1"
+        ],
+        "AAAA": []
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Confirm every address belongs to your expected hosting/CDN provider; remove stray records.",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "DNS-002",
+      "check": "dns.proxy",
+      "target": "example.com",
+      "status": "info",
+      "severity": "info",
+      "title": "Resolver returned a benchmark/fake-IP range (198.18.0.0/15)",
+      "detail": "This network likely uses a transparent proxy; DNS and plain-HTTP results are not authoritative. Re-run DNS checks from an unproxied network or with an external resolver.",
+      "evidence": null,
+      "evidence_basis": "observed",
+      "recommendation": "",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "TLS-001",
+      "check": "tls.verify",
+      "target": "example.com",
+      "status": "pass",
+      "severity": "info",
+      "title": "TLS certificate valid for hostname",
+      "detail": "",
+      "evidence": {
+        "san": [
+          "example.com",
+          "*.example.com"
+        ],
+        "issuer": "SSL Corporation",
+        "not_after": "2026-12-25T22:56:35+00:00",
+        "protocol": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      },
+      "evidence_basis": "observed",
+      "recommendation": "",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "TLS-002",
+      "check": "tls.expiry",
+      "target": "example.com",
+      "status": "pass",
+      "severity": "info",
+      "title": "Certificate expires in 36 days",
+      "detail": "",
+      "evidence": {
+        "days_left": 36
+      },
+      "evidence_basis": "observed",
+      "recommendation": "",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "PQ-001",
+      "check": "pq.hybrid_kex",
+      "target": "example.com",
+      "status": "pass",
+      "severity": "info",
+      "title": "Hybrid post-quantum key exchange negotiated",
+      "detail": "",
+      "evidence": {
+        "group": "X25519MLKEM768"
+      },
+      "evidence_basis": "observed",
+      "recommendation": "",
+      "priority": null,
+      "framework_refs": [
+        "FIPS-203"
+      ],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HTTP-001",
+      "check": "http.redirect",
+      "target": "example.com",
+      "status": "not_tested",
+      "severity": "info",
+      "title": "HTTP returned 500; redirect could not be assessed",
+      "detail": "",
+      "evidence": {
+        "status": 500,
+        "location": ""
+      },
+      "evidence_basis": "observed",
+      "recommendation": "",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HEADERS-001",
+      "check": "headers.strict-transport-security",
+      "target": "example.com",
+      "status": "fail",
+      "severity": "medium",
+      "title": "Missing strict-transport-security",
+      "detail": "",
+      "evidence": {
+        "status": 200
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Add HSTS: max-age=31536000; includeSubDomains (preload when ready).",
+      "priority": "P1",
+      "framework_refs": [
+        "OWASP-ASVS-V14",
+        "NIS2-21(2)(e)"
+      ],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HEADERS-002",
+      "check": "headers.content-security-policy",
+      "target": "example.com",
+      "status": "fail",
+      "severity": "medium",
+      "title": "Missing content-security-policy",
+      "detail": "",
+      "evidence": {
+        "status": 200
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Add a CSP; start with report-only, avoid 'unsafe-inline'/'unsafe-eval', set frame-ancestors.",
+      "priority": "P1",
+      "framework_refs": [
+        "OWASP-ASVS-V14",
+        "NIS2-21(2)(e)"
+      ],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HEADERS-003",
+      "check": "headers.x-content-type-options",
+      "target": "example.com",
+      "status": "fail",
+      "severity": "low",
+      "title": "Missing x-content-type-options",
+      "detail": "",
+      "evidence": {
+        "status": 200
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Add X-Content-Type-Options: nosniff.",
+      "priority": "P2",
+      "framework_refs": [
+        "OWASP-ASVS-V14",
+        "NIS2-21(2)(e)"
+      ],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HEADERS-004",
+      "check": "headers.referrer-policy",
+      "target": "example.com",
+      "status": "fail",
+      "severity": "low",
+      "title": "Missing referrer-policy",
+      "detail": "",
+      "evidence": {
+        "status": 200
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Add Referrer-Policy: strict-origin-when-cross-origin.",
+      "priority": "P2",
+      "framework_refs": [
+        "OWASP-ASVS-V14",
+        "NIS2-21(2)(e)"
+      ],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HEADERS-005",
+      "check": "headers.permissions-policy",
+      "target": "example.com",
+      "status": "fail",
+      "severity": "low",
+      "title": "Missing permissions-policy",
+      "detail": "",
+      "evidence": {
+        "status": 200
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Add a Permissions-Policy disabling unused features (camera, microphone, geolocation).",
+      "priority": "P2",
+      "framework_refs": [
+        "OWASP-ASVS-V14",
+        "NIS2-21(2)(e)"
+      ],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "HEADERS-006",
+      "check": "headers.disclosure",
+      "target": "example.com",
+      "status": "info",
+      "severity": "info",
+      "title": "Server/stack disclosed in headers",
+      "detail": "",
+      "evidence": {
+        "server": "cloudflare"
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Optional: minimize version disclosure.",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "MANIFEST-001",
+      "check": "manifest.llms_txt",
+      "target": "example.com",
+      "status": "info",
+      "severity": "info",
+      "title": "/llms.txt not published",
+      "detail": "",
+      "evidence": {
+        "path": "/llms.txt",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8"
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Optional: publish if you expose content or agents to AI clients; keep links accurate.",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "MANIFEST-002",
+      "check": "manifest.security_txt",
+      "target": "example.com",
+      "status": "warn",
+      "severity": "low",
+      "title": "/.well-known/security.txt not published",
+      "detail": "",
+      "evidence": {
+        "path": "/.well-known/security.txt",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8"
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Publish RFC 9116 security.txt with Contact and Expires.",
+      "priority": "P2",
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    },
+    {
+      "id": "MANIFEST-003",
+      "check": "manifest.agent_card",
+      "target": "example.com",
+      "status": "info",
+      "severity": "info",
+      "title": "/.well-known/agent-card.json not published",
+      "detail": "",
+      "evidence": {
+        "path": "/.well-known/agent-card.json",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8"
+      },
+      "evidence_basis": "observed",
+      "recommendation": "Optional: publish if you expose content or agents to AI clients; keep links accurate.",
+      "priority": null,
+      "framework_refs": [],
+      "source": "posture_check.py/1.0",
+      "observed_at": "2026-11-19T18:45:17+00:00"
+    }
+  ],
+  "summary": {
+    "verdict": "needs work",
+    "issues_by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 4
+    },
+    "total_checks": 15,
+    "errors": 0,
+    "complete": true,
+    "disclaimer": "Passive heuristic posture check; not a penetration test, audit or certification."
+  }
+}

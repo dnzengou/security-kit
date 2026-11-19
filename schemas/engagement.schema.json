@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/security-kit/engagement.schema.json",
+  "title": "Engagement / rules of engagement",
+  "type": "object",
+  "required": ["engagement_id", "client", "authorizer", "scope", "out_of_scope", "window", "allowed_methods", "stop_conditions", "emergency_contact", "approved_at"],
+  "properties": {
+    "engagement_id": {"type": "string"},
+    "client": {"type": "string"},
+    "authorizer": {"type": "object", "required": ["name", "role"], "properties": {"name": {"type": "string"}, "role": {"type": "string"}, "email": {"type": "string"}}},
+    "assessor": {"type": "string"},
+    "scope": {"type": "array", "items": {"type": "object", "required": ["asset", "type"], "properties": {"asset": {"type": "string"}, "type": {"enum": ["domain", "host", "application", "api", "llm_app", "agent", "contract", "wallet", "cloud_account", "process", "other"]}, "environment": {"enum": ["production", "staging", "test", "n/a"]}}}},
+    "out_of_scope": {"type": "array", "items": {"type": "string"}},
+    "window": {"type": "object", "required": ["start", "end"], "properties": {"start": {"type": "string", "format": "date-time"}, "end": {"type": "string", "format": "date-time"}, "timezone": {"type": "string"}}},
+    "allowed_methods": {"type": "array", "items": {"enum": ["passive_public_read", "tls_handshake", "header_fetch", "config_review", "document_review", "interview", "staging_test_plan", "tabletop", "load_test_staging"]}},
+    "prohibited": {"type": "array", "items": {"type": "string"}},
+    "stop_conditions": {"type": "array", "items": {"type": "string"}},
+    "emergency_contact": {"type": "string"},
+    "data_handling": {"type": "string"},
+    "frameworks": {"type": "array", "items": {"type": "string"}},
+    "approved_at": {"type": "string", "format": "date-time"},
+    "signature_ref": {"type": "string", "description": "Pointer to signed authorization letter in evidence register"}
+  }
+}

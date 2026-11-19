@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/security-kit/assessment.schema.json",
+  "title": "Maturity assessment result",
+  "type": "object",
+  "required": ["org", "date", "domains", "overall_claimed", "overall_verified", "band_claimed", "band_verified", "gates_triggered"],
+  "$defs": {
+    "band": {"enum": ["Exposed", "Developing", "Managed", "Resilient"]},
+    "score": {"type": "number", "minimum": 0, "maximum": 100}
+  },
+  "properties": {
+    "org": {"type": "string"},
+    "date": {"type": "string", "format": "date"},
+    "assessor": {"type": "string"},
+    "scope": {"type": "string"},
+    "domains": {
+      "type": "object",
+      "patternProperties": {
+        "^D[1-9]$": {
+          "type": "object",
+          "required": ["name", "weight", "claimed", "verified"],
+          "properties": {
+            "name": {"type": "string"},
+            "weight": {"type": "number"},
+            "claimed": {"$ref": "#/$defs/score"},
+            "verified": {"$ref": "#/$defs/score"},
+            "answered": {"type": "integer"},
+            "self_reported": {"type": "integer"}
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "overall_claimed": {"$ref": "#/$defs/score"},
+    "overall_verified": {"$ref": "#/$defs/score"},
+    "band_claimed": {"$ref": "#/$defs/band"},
+    "band_verified": {"$ref": "#/$defs/band"},
+    "quantum_readiness": {"$ref": "#/$defs/score"},
+    "pq_urgency": {"enum": ["low", "medium", "high", "urgent"]},
+    "gates_triggered": {"type": "array", "items": {"type": "string"}},
+    "findings": {"type": "array", "items": {"$ref": "finding.schema.json"}},
+    "disclaimer": {"type": "string"}
+  }
+}
