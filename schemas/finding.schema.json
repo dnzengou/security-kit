@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/security-kit/finding.schema.json",
+  "title": "Security finding",
+  "type": "object",
+  "required": ["id", "check", "target", "status", "severity", "title", "source"],
+  "properties": {
+    "id": {"type": "string", "description": "Stable ID, e.g. TLS-001 or AI-LLM06-02"},
+    "check": {"type": "string", "description": "Check or control identifier, e.g. tls.expiry, headers.csp, llm06.approval_gate"},
+    "target": {"type": "string", "description": "Asset assessed (host, system, agent, contract)"},
+    "status": {"enum": ["pass", "fail", "warn", "info", "error", "not_tested"]},
+    "severity": {"enum": ["critical", "high", "medium", "low", "info"]},
+    "title": {"type": "string"},
+    "detail": {"type": "string"},
+    "evidence": {"type": ["string", "object", "null"], "description": "Observed value or pointer to evidence register entry; never fabricated"},
+    "evidence_basis": {"enum": ["observed", "evidence-seen", "self-reported"]},
+    "recommendation": {"type": "string"},
+    "priority": {"enum": ["P0", "P1", "P2", null]},
+    "framework_refs": {"type": "array", "items": {"type": "string"}, "description": "e.g. OWASP-LLM01:2025, NIS2-21(2)(h), ISO27001:2022-A.8.24"},
+    "owner": {"type": "string"},
+    "source": {"type": "string", "description": "Tool or method that produced it, e.g. posture_check.py/1.0, manual review"},
+    "observed_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/security-kit/evidence.schema.json",
+  "title": "Evidence register entry",
+  "type": "object",
+  "required": ["id", "control_refs", "artefact", "owner", "collected_at", "location"],
+  "properties": {
+    "id": {"type": "string", "description": "e.g. EV-2026-0001"},
+    "engagement_id": {"type": "string"},
+    "control_refs": {"type": "array", "items": {"type": "string"}, "description": "e.g. NIS2-21(2)(c), ISO27001:2022-A.8.13, SOC2-CC7.2"},
+    "artefact": {"type": "string", "description": "Policy, screenshot, log export, config, drill report, signed RoE"},
+    "artefact_type": {"enum": ["policy", "screenshot", "log", "config", "report", "attestation", "tool_output", "other"]},
+    "result": {"enum": ["pass", "fail", "partial", "n/a"]},
+    "finding_ids": {"type": "array", "items": {"type": "string"}},
+    "owner": {"type": "string"},
+    "approver": {"type": "string"},
+    "collected_at": {"type": "string", "format": "date-time"},
+    "location": {"type": "string", "description": "URI or path to stored artefact"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "review_due": {"type": "string", "format": "date"},
+    "retention_until": {"type": "string", "format": "date"}
+  }
+}
