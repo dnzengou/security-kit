@@ -1,0 +1,2 @@
+id,engagement_id,control_refs,artefact,artefact_type,result,finding_ids,owner,approver,collected_at,location,sha256,review_due,retention_until
+EV-0001,{{ENG}},"NIS2-21(2)(b)",Signed RoE,attestation,n/a,,{{owner}},{{approver}},{{ISO8601}},{{uri}},{{sha256}},{{date}},{{date}}
