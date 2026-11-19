@@ -1,0 +1,23 @@
+{
+  "name": "Security Kit Agent",
+  "description": "Defensive, advisory security assessments: posture, maturity, AI-agent review, NIS2 readiness, post-quantum readiness. Authorized targets only; no exploitation.",
+  "url": "https://agent.example.org/a2a",
+  "version": "1.0.0",
+  "provider": {"organization": "{{OWNER}}", "url": "https://example.org"},
+  "documentationUrl": "https://example.org/security-kit",
+  "capabilities": {"streaming": false, "pushNotifications": false},
+  "securitySchemes": {"apiKey": {"type": "apiKey", "in": "header", "name": "X-API-Key"}},
+  "security": [{"apiKey": []}],
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/markdown"],
+  "skills": [
+    {"id": "security-posture", "name": "Security posture", "description": "Passive TLS, post-quantum key exchange, redirect, header and manifest check.", "tags": ["tls", "pqc", "headers"]},
+    {"id": "maturity-assessment", "name": "Maturity assessment", "description": "Scored D1-D9 security and crypto-agility maturity with claimed/verified scores.", "tags": ["governance", "nis2", "pqc"]},
+    {"id": "agentic-ai-review", "name": "Agentic AI review", "description": "OWASP LLM Top 10 / agentic threat control review with safe/warn/vulnerable verdict.", "tags": ["llm", "agents"]},
+    {"id": "nis2-incident-pack", "name": "NIS2 incident pack", "description": "Art. 21 coverage map, Art. 23 reporting templates and drills.", "tags": ["nis2", "incident"]},
+    {"id": "web3-pq-checklist", "name": "Web3 PQ checklist", "description": "Smart-contract and wallet key-management and post-quantum readiness checklist.", "tags": ["web3", "pqc"]},
+    {"id": "threat-model", "name": "Threat model", "description": "STRIDE/LINDDUN threat model with P0-P2 backlog.", "tags": ["threat-model"]},
+    {"id": "soc-practice", "name": "SOC practice", "description": "Triage cards, detection gaps, hardening checklists, runbooks.", "tags": ["soc"]},
+    {"id": "redteam-program", "name": "Red-team program", "description": "Recurring test-plan-level red-team and stress-test program with evidence register.", "tags": ["assurance", "compliance"]}
+  ]
+}

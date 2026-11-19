@@ -1,0 +1,181 @@
+{
+  "org": "Example Org (fictional)",
+  "date": "2026-01-15",
+  "assessor": "Assessor name",
+  "scope": "Corporate IT, public website, customer-facing chatbot",
+  "domains": {
+    "D1": {
+      "name": "Governance & people",
+      "weight": 12.0,
+      "claimed": 50.0,
+      "verified": 50.0,
+      "answered": 2,
+      "self_reported": 1
+    },
+    "D2": {
+      "name": "Asset & crypto inventory",
+      "weight": 12.0,
+      "claimed": 20.0,
+      "verified": 20.0,
+      "answered": 2,
+      "self_reported": 2
+    },
+    "D3": {
+      "name": "Identity & access",
+      "weight": 14.0,
+      "claimed": 80.0,
+      "verified": 70.0,
+      "answered": 2,
+      "self_reported": 1
+    },
+    "D4": {
+      "name": "Crypto-agility & post-quantum readiness",
+      "weight": 12.0,
+      "claimed": 50.0,
+      "verified": 50.0,
+      "answered": 2,
+      "self_reported": 0
+    },
+    "D5": {
+      "name": "Secure build, web & supply chain",
+      "weight": 12.0,
+      "claimed": 50.0,
+      "verified": 50.0,
+      "answered": 2,
+      "self_reported": 1
+    },
+    "D6": {
+      "name": "Detection & logging",
+      "weight": 10.0,
+      "claimed": 40.0,
+      "verified": 40.0,
+      "answered": 1,
+      "self_reported": 1
+    },
+    "D7": {
+      "name": "Incident response & NIS2 reporting",
+      "weight": 10.0,
+      "claimed": 60.0,
+      "verified": 60.0,
+      "answered": 1,
+      "self_reported": 1
+    },
+    "D8": {
+      "name": "Backup & continuity",
+      "weight": 10.0,
+      "claimed": 40.0,
+      "verified": 40.0,
+      "answered": 2,
+      "self_reported": 2
+    },
+    "D9": {
+      "name": "AI & agent security",
+      "weight": 8.0,
+      "claimed": 70.0,
+      "verified": 50.0,
+      "answered": 2,
+      "self_reported": 2
+    }
+  },
+  "overall_claimed": 51.2,
+  "overall_verified": 48.2,
+  "band_claimed": "Developing",
+  "band_verified": "Developing",
+  "quantum_readiness": 35.0,
+  "pq_urgency": "urgent",
+  "gates_triggered": [
+    "Backups never restore-tested",
+    "No asset inventory"
+  ],
+  "findings": [
+    {
+      "id": "MA-D1.2",
+      "check": "maturity.D1.D1.2",
+      "target": "Example Org (fictional)",
+      "status": "warn",
+      "severity": "medium",
+      "title": "Policy set approved by management",
+      "evidence_basis": "self-reported",
+      "priority": "P2",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D2.1",
+      "check": "maturity.D2.D2.1",
+      "target": "Example Org (fictional)",
+      "status": "fail",
+      "severity": "high",
+      "title": "Hardware/software/SaaS inventory",
+      "evidence_basis": "self-reported",
+      "priority": "P0",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D2.2",
+      "check": "maturity.D2.D2.2",
+      "target": "Example Org (fictional)",
+      "status": "fail",
+      "severity": "medium",
+      "title": "Inventory of where cryptography is used",
+      "evidence_basis": "self-reported",
+      "priority": "P1",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D4.2",
+      "check": "maturity.D4.D4.2",
+      "target": "Example Org (fictional)",
+      "status": "fail",
+      "severity": "medium",
+      "title": "Hybrid PQ key exchange where supported",
+      "evidence_basis": "evidence-seen",
+      "priority": "P1",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D5.2",
+      "check": "maturity.D5.D5.2",
+      "target": "Example Org (fictional)",
+      "status": "warn",
+      "severity": "medium",
+      "title": "Dependency scanning in CI",
+      "evidence_basis": "self-reported",
+      "priority": "P2",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D6.1",
+      "check": "maturity.D6.D6.1",
+      "target": "Example Org (fictional)",
+      "status": "warn",
+      "severity": "medium",
+      "title": "Centralized auth/admin logs with alerting",
+      "evidence_basis": "self-reported",
+      "priority": "P2",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D8.1",
+      "check": "maturity.D8.D8.1",
+      "target": "Example Org (fictional)",
+      "status": "fail",
+      "severity": "high",
+      "title": "Backup restore tested in last 12 months",
+      "evidence_basis": "self-reported",
+      "priority": "P0",
+      "source": "score_assessment.py/1.0"
+    },
+    {
+      "id": "MA-D9.1",
+      "check": "maturity.D9.D9.1",
+      "target": "Example Org (fictional)",
+      "status": "warn",
+      "severity": "medium",
+      "title": "Approval gates on agent external actions",
+      "evidence_basis": "self-reported",
+      "priority": "P2",
+      "source": "score_assessment.py/1.0"
+    }
+  ],
+  "disclaimer": "Heuristic maturity self-assessment; not an audit or certification. Self-reported answers capped at 3 in Verified."
+}

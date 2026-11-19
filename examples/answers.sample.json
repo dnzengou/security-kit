@@ -1,0 +1,27 @@
+{
+  "org": "Example Org (fictional)",
+  "date": "2026-01-15",
+  "assessor": "Assessor name",
+  "scope": "Corporate IT, public website, customer-facing chatbot",
+  "d9_in_scope": true,
+  "data_sensitivity": "high",
+  "data_shelf_life": ">10y",
+  "answers": [
+    {"id": "D1.1", "domain": "D1", "score": 3, "basis": "evidence-seen", "text": "Named security owner"},
+    {"id": "D1.2", "domain": "D1", "score": 2, "basis": "self-reported", "text": "Policy set approved by management"},
+    {"id": "D2.1", "domain": "D2", "score": 1, "basis": "self-reported", "gate": "asset_inventory", "text": "Hardware/software/SaaS inventory"},
+    {"id": "D2.2", "domain": "D2", "score": 1, "basis": "self-reported", "text": "Inventory of where cryptography is used"},
+    {"id": "D3.1", "domain": "D3", "score": 4, "basis": "evidence-seen", "gate": "mfa_admin_email", "text": "MFA on email/admin/cloud"},
+    {"id": "D3.2", "domain": "D3", "score": 4, "basis": "self-reported", "text": "Least privilege & joiner-mover-leaver"},
+    {"id": "D4.1", "domain": "D4", "score": 4, "basis": "evidence-seen", "gate": "public_tls_valid", "text": "TLS 1.2+/1.3 on all public endpoints"},
+    {"id": "D4.2", "domain": "D4", "score": 1, "basis": "evidence-seen", "text": "Hybrid PQ key exchange where supported"},
+    {"id": "D5.1", "domain": "D5", "score": 3, "basis": "evidence-seen", "text": "Security headers / CSP"},
+    {"id": "D5.2", "domain": "D5", "score": 2, "basis": "self-reported", "text": "Dependency scanning in CI"},
+    {"id": "D6.1", "domain": "D6", "score": 2, "basis": "self-reported", "text": "Centralized auth/admin logs with alerting"},
+    {"id": "D7.1", "domain": "D7", "score": 3, "basis": "self-reported", "gate": "ir_plan", "text": "IR plan with NIS2 reporting clock"},
+    {"id": "D8.1", "domain": "D8", "score": 1, "basis": "self-reported", "gate": "backup_restore_tested", "text": "Backup restore tested in last 12 months"},
+    {"id": "D8.2", "domain": "D8", "score": 3, "basis": "self-reported", "text": "Immutable/offline backup copy"},
+    {"id": "D9.1", "domain": "D9", "score": 2, "basis": "self-reported", "text": "Approval gates on agent external actions"},
+    {"id": "D9.2", "domain": "D9", "score": 5, "basis": "self-reported", "text": "Secrets kept out of prompts"}
+  ]
+}
