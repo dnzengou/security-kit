@@ -1,0 +1,2 @@
+id,title,asset,severity,priority,framework_refs,status,owner,due_date,fix,verification,evidence_id
+F-001,{{title}},{{asset}},high,P0,"NIS2-21(2)(j);ISO27001:2022-A.5.17",open,{{owner}},{{YYYY-MM-DD}},{{fix}},{{how retest proves fix}},{{EV-id}}
